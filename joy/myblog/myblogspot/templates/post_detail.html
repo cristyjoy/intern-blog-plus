@@ -13,10 +13,10 @@
   <h2>Post Detail</h2>
   {% if object_list %}
       {% for post in object_list %}
-          <h3>Heading: {{ post.post_list.heading }}</h3>
-          <h5>Sub Heading: {{ post.post_list.sub_heading }}</h5>
+          <h3 class="heading">Heading: {{ post.blog.heading }}</h3>
+          <h5 class="sub_heading">Sub Heading: {{ post.blog.sub_Heading }}</h5>
           <img src="{{ post.banner_Photo.url }}">
-          <p style="color:olive;font-size:24px;">User: {{ post.user }}</p>
+          <p>User: {{ post.user }}</p>
           <p><small>Date Created: {{ post.date_created }}, Updated {{ post.date_modified|timesince }} ago</small></p>
           {% for tag in post.tags.all %}
               {% if forloop.last %}

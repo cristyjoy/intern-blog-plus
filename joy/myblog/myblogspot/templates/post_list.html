@@ -1,4 +1,4 @@
-
+{% extends "base.html" %}
 {% load static %}
 
 
@@ -10,31 +10,15 @@
   <h2>Post Lists</h2>
   {% if object_list %}
       {% for post in object_list %}
-          <h3>Heading: {{ post.post_list.heading }}</h3>
-          <h5>Sub Heading: {{ post.post_list.sub_heading }}</h5>
+        <p>Title: {{ post.title }}</p>
+          <p>Sub Title: {{ post.sub_Title }}</p>
           <img src="{{ post.banner_Photo.url }}">
-          <p>User: {{ post.user}}</p>
-          <p><small>Date Created: {{ post.date_created }}, Updated {{ post.date_modified|timesince }} ago</small></p>
-          {% for tag in post.tags.all %}
-              {% if forloop.last %}
-                  <p>Tag: {{ tag }}</p>
-              {% else %}
-                  <p>{{ tag }},</p>
-              {% endif %}
-          {% endfor %}
-          <p>Category: {{ post.category }}</p>
+          <br>
+          <a href='{% url "blog:post_detail" post.id %}' role="button">Post Details</a>
+        </br>
 
-          <p>Body: {{ post.body }}</p>
-          <p>Status: {{ post.status }}</p>
       {% endfor %}
   {% else %}
       <p>No post</p>
   {% endif %}
-     <!-- begin wwww.htmlcommentbox.com -->
- <div id="HCB_comment_box"><a href="http://www.htmlcommentbox.com">Comment Form</a> is loading comments...</div>
- <link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
- <script type="text/javascript" id="hcb"> /*<!--*/ if(!window.hcb_user){hcb_user={};} (function(){var s=document.createElement("script"), l=hcb_user.PAGE || (""+window.location).replace(/'/g,"%27"), h="//www.htmlcommentbox.com";s.setAttribute("type","text/javascript");s.setAttribute("src", h+"/jread?page="+encodeURIComponent(l).replace("+","%2B")+"&mod=%241%24wq1rdBcg%24NkVia4xlGjNk9tTLiieSQ%2F"+"&opts=16862&num=10&ts=1524463808900");if (typeof s!="undefined") document.getElementsByTagName("head")[0].appendChild(s);})(); /*-->*/ </script>
-<!-- end www.htmlcommentbox.com -->
-
-
 {% endblock %}

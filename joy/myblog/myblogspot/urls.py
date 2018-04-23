@@ -22,6 +22,6 @@ from .views import PostDetailView, PostView
 app_name = 'myblogspot'
 
 urlpatterns = [
-    path('post/<int:post_id>/', PostDetailView.as_view(), name='index'),
+    path('post/<int:post_id>/', PostDetailView.as_view(), name='post_detail'),
     path('', PostView.as_view(), name='post-list'),
 ]

@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.views import View, generic
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 from .models import Post, Index, Category, Tag,Comment
@@ -16,11 +17,12 @@ class PostDetailView(View):
         }
          return render(request, "post_detail.html", context)
 
-class PostView(View):
+class PostView(LoginRequiredMixin,View):
 
     def get(self, request, *args, **kwargs):
-         post = Post.objects.all().order_by('-date_created')
-         context = {
+
+        post = Post.objects.all().order_by('-date_created')
+        context = {
             'object_list':post,
         }
-         return render(request, "post_list.html", context)
+        return render(request, "post_list.html", context)

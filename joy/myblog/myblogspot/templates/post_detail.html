@@ -1,11 +1,12 @@
-{% extends "base.html" %}
+
 
 {% load static %}
 
-{% block head_title %}List | {{ block.super }}{% endblock head_title %}
+
 
 {% block content %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+   <link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}" />
 
 
 
@@ -15,7 +16,7 @@
           <h3>Heading: {{ post.post_list.heading }}</h3>
           <h5>Sub Heading: {{ post.post_list.sub_heading }}</h5>
           <img src="{{ post.banner_Photo.url }}">
-          <p>Author: {{ post.author }}</p>
+          <p style="color:olive;font-size:24px;">User: {{ post.user }}</p>
           <p><small>Date Created: {{ post.date_created }}, Updated {{ post.date_modified|timesince }} ago</small></p>
           {% for tag in post.tags.all %}
               {% if forloop.last %}

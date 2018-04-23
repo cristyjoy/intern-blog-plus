@@ -18,12 +18,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url
+#from info.views import RegisterView
 
 
 urlpatterns = [
-    path('myblogspot/', include('myblogspot.urls', namespace='myblogspot')),
+    path('blog/', include('myblogspot.urls', namespace='blog')),
     path('admin/', admin.site.urls),
     url(r'^accounts/',include('django.contrib.auth.urls')),
+    #url(r'^register/$', RegisterView.as_view(), name='register'),
 ]
 
 if settings.DEBUG:

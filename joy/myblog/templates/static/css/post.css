@@ -1,0 +1,59 @@
+body{
+
+  background-image: url("img/me.jpg");
+  background-repeat: no-repeat;
+}
+
+.card{
+   background-color: lightblue;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   max-width: 900px;
+   margin:auto;
+   transition: 0.3s;
+   border-radius: 10px;
+   padding-left: 20px;
+   padding-bottom:20px;
+}
+.p{
+   font-family: "Times New Roman", Times, serif;
+   font-size: 16.5px;
+}
+.heading{
+   letter-spacing: 3px;
+   text-transform: uppercase;
+   color: #1C9487
+;
+   font-weight: 400;
+   line-height: 1.4em;
+   transition: .25s;
+   text-align: center;
+   margin-bottom: 0px;
+}
+.sub_heading{
+   letter-spacing: 3px;
+   text-transform: uppercase;
+   color: #1C9487
+;
+   font-weight: 400;
+   line-height: 1.4em;
+   transition: .25s;
+   text-align: center;
+   margin-bottom: 0px;
+}
+.tags{
+   display: inline-block;
+   padding: 0.25em 0.4em;
+   font-size: 75%;
+   font-weight: 700;
+   line-height: 1;
+   text-align: center;
+   white-space: nowrap;
+   vertical-align: baseline;
+   border-radius: 0;
+}
+img{
+   width: 250px;
+   height: auto;
+   float: center;
+   border-radius: 25%;
+}

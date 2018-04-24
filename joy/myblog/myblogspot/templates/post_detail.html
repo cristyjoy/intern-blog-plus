@@ -14,7 +14,7 @@
   {% if object_list %}
       {% for post in object_list %}
           <h3 class="heading">Heading: {{ post.blog.heading }}</h3>
-          <h5 class="sub_heading">Sub Heading: {{ post.blog.sub_Heading }}</h5>
+          <h3 class="sub_heading">Sub Heading: {{ post.blog.sub_Heading }}</h3>
           <img src="{{ post.banner_Photo.url }}">
           <p>User: {{ post.user }}</p>
           <p><small>Date Created: {{ post.date_created }}, Updated {{ post.date_modified|timesince }} ago</small></p>

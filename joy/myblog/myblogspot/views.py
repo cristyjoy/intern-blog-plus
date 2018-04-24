@@ -10,8 +10,8 @@ from .models import Post, Index, Category, Tag,Comment
 
 class PostDetailView(View):
 
-    def get(self, request, post_id, *args, **kwargs):
-         post = Post.objects.filter(pk=post_id).order_by('-date_created')
+    def get(self, request, title, *args, **kwargs):
+         post = Post.objects.filter(title=title).order_by('-date_created')
          context = {
             'object_list':post,
         }

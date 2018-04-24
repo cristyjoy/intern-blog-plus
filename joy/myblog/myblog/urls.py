@@ -22,7 +22,7 @@ from django.conf.urls import url
 
 
 urlpatterns = [
-    path('blog/', include('myblogspot.urls', namespace='blog')),
+    path('posts/', include('myblogspot.urls', namespace='posts')),
     path('admin/', admin.site.urls),
     url(r'^accounts/',include('django.contrib.auth.urls')),
     #url(r'^register/$', RegisterView.as_view(), name='register'),

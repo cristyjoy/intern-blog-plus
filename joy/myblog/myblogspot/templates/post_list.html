@@ -1,21 +1,27 @@
-{% load static %}
+  {% load static %}
 
-{% block content %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}" />
+  {% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}" />
+   <!-- Navigation -->
+   <div class="header">
+    <h1>Cristy's Travelogue</h1>
+    <h5>MUSIC, LIFESTYLE & TRAVEL BLOG</h5>
+  </div>
+    <h2>Post Lists</h2>
+    {% if object_list %}
+        {% for post in object_list %}
 
-  <h2>Post Lists</h2>
-  {% if object_list %}
-      {% for post in object_list %}
-        <p>Title: {{ post.title }}</p>
-          <p>Sub Title: {{ post.sub_Title }}</p>
-          <img src="{{ post.banner_Photo.url }}">
-          <br>
-          <a href='{% url "posts:post_detail" post.title %}' role="button">Post Details</a>
-        </br>
-
-      {% endfor %}
-  {% else %}
-      <p>No post</p>
-  {% endif %}
-{% endblock %}
+          <div class="card">
+          <p>Title: {{ post.title }}</p>
+            <p>Sub Title: {{ post.sub_title }}</p>
+            <img src="{{ post.banner_Photo.url }}">
+            <br>
+            <a href='{% url "posts:post_detail" post.title %}' role="button">Read More</a>
+          </br>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No post</p>
+    {% endif %}
+  {% endblock %}

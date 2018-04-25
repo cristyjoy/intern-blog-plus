@@ -1,33 +1,31 @@
-
-
 {% load static %}
-
-
-
 {% block content %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
    <link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}" />
 
-
+    <div class="header">
+    <h1>Cristy's Travelogue</h1>
+    <h5>MUSIC, LIFESTYLE & TRAVEL BLOG</h5>
+  </div>
 
   <h2>Post Detail</h2>
   {% if object_list %}
       {% for post in object_list %}
-          <h3 class="heading">Heading: {{ post.blog.heading }}</h3>
-          <h3 class="sub_heading">Sub Heading: {{ post.blog.sub_Heading }}</h3>
-          <img src="{{ post.banner_Photo.url }}">
-          <p>User: {{ post.user }}</p>
-          <p><small>Date Created: {{ post.date_created }}, Updated {{ post.date_modified|timesince }} ago</small></p>
-          {% for tag in post.tags.all %}
-              {% if forloop.last %}
-                  <p>Tag: {{ tag }}</p>
-              {% else %}
-                  <p>{{ tag }},</p>
-              {% endif %}
-          {% endfor %}
+          <div class="card">
           <p>Category: {{ post.category }}</p>
+          <p><small>Posted on: {{ post.date_created }}</small></p>
+          <h3 class="heading">Heading: {{ post.blog.heading }}</h3>
+          <h3 class="sub_heading">Sub Heading: {{ post.blog.sub_heading }}</h3>
+          <img src="{{ post.banner_Photo.url }}">
           <p>Body: {{ post.body }}</p>
-          <p>Status: {{ post.status }}</p>
+       </div>
+       <div class="card">
+  <p>commments :</p>
+ {% for comment in comment %}
+   <p>{{comment.author}}</p>
+   <p>{{ comment.text }}</p>
+   <small>{{ comment.date_created  }}</small>
+   <p>-------------------------------</p>  {% endfor %}
       {% endfor %}
   {% else %}
       <p>No post</p>

@@ -24,4 +24,5 @@ app_name = 'myblogspot'
 urlpatterns = [
     path('<title>/', PostDetailView.as_view(), name='post_detail'),
     path('', PostView.as_view(), name='post-list'),
+    path('post/comment/', views.Comment, name='post-comment'),
 ]

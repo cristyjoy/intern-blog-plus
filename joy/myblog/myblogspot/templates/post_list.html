@@ -1,3 +1,4 @@
+{% extends "base.html" %}
   {% load static %}
 
   {% block content %}
@@ -8,6 +9,7 @@
     <h1>Cristy's Travelogue</h1>
     <h5>MUSIC, LIFESTYLE & TRAVEL BLOG</h5>
   </div>
+
     <h2>Post Lists</h2>
     {% if object_list %}
         {% for post in object_list %}

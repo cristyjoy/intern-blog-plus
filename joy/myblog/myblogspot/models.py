@@ -56,6 +56,10 @@ class Comment(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
 
 
+    def approve(self):
+       self.approved_comment = True
+       self.save()
+
     def __str__(self):
-        return '{}'.format(self.post)
+       return self.text
 

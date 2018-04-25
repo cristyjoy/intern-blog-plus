@@ -1,52 +1,32 @@
   {% load staticfiles %}
   <!DOCTYPE html>
   <html lang=en>
-  <meta charset="UTF-8">
-          <link rel="stylesheet" type="text/css" href="css/base.css">
-
-  <body>
-
-           <!-- Navigation -->
-
-<div class="topnav" id=myTopnav>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+      <link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}" />
+      <head>
+      <body>
+        <!--Navigation-->
+<div class="topnav" id="myTopnav">
   <a href="#home" class="active">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
+  <a href="#category">Category</a>
+  <a href="#status">Status</a>
   <a href="about page.html">About</a>
-  <a href="javascript":void(0); style="font-size: 15px;" class="icon" onclick="myFunction()">&#9776;</a>
 </div>
 
-<div class="header">
-  <h1>Cristy's Travelogue</h1>
-</div>
- <!-- Slide Show -->
-<section>
-  <img class="mySlides" src="img_me.jpg" style="width:100%">
-  <img class="mySlides" src="img_sis.jpg" style="width:100%">
-  <img class="mySlides" src="img_taoist.jpg" style="width:100%">
-</section>
 
-<script>
-// Automatic Slideshow - change image every 3 seconds
-var myIndex = 0;
-carousel();
-
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";
+  <script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
     }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}
-    x[myIndex-1].style.display = "block";
-    setTimeout(carousel, 3000);
 }
 </script>
- {% block content %}{% endblock content %}
 
- <div class="footer">
-  <p>Footer</p>
-</div>
-    </body>
+
+
+          {% block content %}{% endblock content %}
+      </body>
   </html>

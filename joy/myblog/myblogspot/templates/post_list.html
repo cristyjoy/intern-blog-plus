@@ -15,7 +15,7 @@
           <div class="card">
           <p>Title: {{ post.title }}</p>
             <p>Sub Title: {{ post.sub_title }}</p>
-            <img src="{{ post.banner_Photo.url }}">
+            <img src="{{ post.banner_photo.url }}">
             <br>
             <a href='{% url "posts:post_detail" post.title %}' role="button">Read More</a>
           </br>

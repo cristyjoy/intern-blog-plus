@@ -24,7 +24,7 @@ class Post(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     sub_title = models.CharField(max_length=150)
-    banner_Photo = models.ImageField(upload_to = 'static/media')
+    banner_photo = models.ImageField(upload_to = 'static/media')
     body = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now_add=True)

@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, Http404, redirect
 from django.views.generic import TemplateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
@@ -18,18 +19,27 @@ class PostDetailView(View):
          return render(request, "post_detail.html", context)
 
     def comment(request):
-         if request.method == 'POST':
-            form = CommentForm(request.POST)
-         if form.is_valid():
-           comment = form.save(commit=False)
-           comment.save()
-           return redirect('/posts')
-         else:
+        post = get_object_or_404(Post, pk=pk)
+        if request.method == 'POST':
+         form = CommentForm(request.POST)
+        if form.is_valid():
+         comment = form.save(commit=False)
+         comment.post = post
+         comment.author = request.user
+         comment.save()
+         return redirect('/posts')
+        else:
             form = CommentForm()
             context = {
-             'form': form,
-         }
-         return render(request, 'myblogspot/comment.html', context)
+            'form': form,
+        }
+        return render(request, 'myblogspot/comment.html', context)
+
+    def get_object(self):
+        title = self.kwargs.get("title")
+        if title is None:
+            raise Http404
+        return get_object_or_404(Post, title__iexact=title)
 
 class PostView(LoginRequiredMixin,View):
 
@@ -40,4 +50,14 @@ class PostView(LoginRequiredMixin,View):
             'object_list':post,
         }
         return render(request, "post_list.html", context)
+
+def Draft(request):
+    post = Post.objects.filter(status__contains='draft')
+    context = {'object_list': post,}
+    return render(request, 'post_list.html', context)
+
+def Hidden(request):
+    post = Post.objects.filter(status__contains='Hidden')
+    context = {'object_list': post,}
+    return render(request, 'post_list.html', context)
 

@@ -4,11 +4,6 @@
   {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}" />
-   <!-- Navigation -->
-   <div class="header">
-    <h1>Cristy's Travelogue</h1>
-    <h5>MUSIC, LIFESTYLE & TRAVEL BLOG</h5>
-  </div>
 
     <h2>Post Lists</h2>
     {% if object_list %}
@@ -17,7 +12,9 @@
           <div class="card">
           <p>Title: {{ post.title }}</p>
             <p>Sub Title: {{ post.sub_title }}</p>
+            <div class="lists">
             <img src="{{ post.banner_photo.url }}">
+          </div>
             <br>
             <a href='{% url "posts:post_detail" post.title %}' role="button">Read More</a>
           </br>

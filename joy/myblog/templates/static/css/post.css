@@ -56,6 +56,8 @@ p{
    background-size: 1000px;
    background-repeat: no-repeat;
    border-style: groove;
+   margin-left: auto;
+   margin-right: auto;
 
 }
 .p{
@@ -93,13 +95,14 @@ p{
    vertical-align: baseline;
    border-radius: 0;
 }
-img{
+.lists img{
    width: 350px;
    height: auto;
    float: center;
    border-radius: 50%;
    margin-left: 300px;
    filter: grayscale(50%);
+   opacity: default;
 }
 
 

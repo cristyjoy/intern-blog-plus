@@ -24,8 +24,9 @@
   <p>commments :</p>
  {% for comment in comment %}
    <p>{{comment.author}}</p>
-   <p>{{ comment.text }}</p>
+   <p>{{ comment.content }}</p>
    <small>{{ comment.date_created  }}</small>
    <hr>
      {% endfor %}
+     <a href="{% url 'posts:post-comment' post.id %}">Comment</a>
 {% endblock %}

@@ -24,7 +24,7 @@ app_name = 'myblogspot'
 urlpatterns = [
     path('detail/<title>/', PostDetailView.as_view(), name='post_detail'),
     path('', PostView.as_view(), name='post-list'),
-    path('<int:pk>/', views.Comment, name='post-comment'),
+    path('<int:pk>/', views.comment, name='post-comment'),
     path('draft/', views.Draft, name='draft'),
     path('hidden/', views.Hidden, name='hidden'),
 ]

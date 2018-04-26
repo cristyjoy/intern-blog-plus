@@ -29,7 +29,8 @@ body {font-family: Verdana, sans-serif;}
   opacity:default;
   margin-right: auto;
   margin-left: auto;
-  max-height: 90%;
+  min-height:100%;
+
 
 
 

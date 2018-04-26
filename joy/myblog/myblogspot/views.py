@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, Http404, redirect
 from django.views.generic import TemplateView
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.views import View, generic
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -18,22 +17,22 @@ class PostDetailView(View):
 
          return render(request, "post_detail.html", context)
 
-    def comment(request):
-        post = get_object_or_404(Post, pk=pk)
-        if request.method == 'POST':
-         form = CommentForm(request.POST)
+def comment(request,pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
         if form.is_valid():
-         comment = form.save(commit=False)
-         comment.post = post
-         comment.author = request.user
-         comment.save()
-         return redirect('/posts')
-        else:
-            form = CommentForm()
-            context = {
-            'form': form,
-        }
-        return render(request, 'myblogspot/comment.html', context)
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect('/posts')
+    else:
+        form = CommentForm()
+        context = {
+        'form': form,
+    }
+    return render(request, 'comment.html', context)
 
     def get_object(self):
         title = self.kwargs.get("title")

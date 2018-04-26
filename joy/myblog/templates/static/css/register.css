@@ -1,12 +1,22 @@
+body{
+  background:url(img/pa.jpg);
+  background-repeat: no-repeat;
+  background-size: 25900px;
+}
 .card{
-   background-color: lightblue;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
    max-width: 900px;
    margin:auto;
    transition: 0.3s;
-   border-radius: 10px;
+   border-radius: 50px;
    padding-left: 20px;
    padding-bottom:20px;
+   background:url("img/gal.jpg");
+   background-size: 1000px;
+   background-repeat: no-repeat;
+   border-style: groove;
+   margin-left: auto;
+   margin-right: auto;
 }
 .p{
    font-family: "Times New Roman", Times, serif;

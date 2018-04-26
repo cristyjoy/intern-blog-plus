@@ -1,7 +1,10 @@
 {% load static %}
 
 {% block content %}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/logout.css' %}" />
+<div class="card">
 <p>Logged out!</p>
 
 <a href="{% url 'login'%}">Click here to login again.</a>
+</div>
 {% endblock %}

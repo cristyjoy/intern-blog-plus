@@ -21,10 +21,10 @@
           <p>Body: {{ post.body }}</p>
        </div>
        <div class="card">
-  <p>commments :</p>
+  <h6>commments :</h6>
  {% for comment in comment %}
-   <p>{{comment.author}}</p>
-   <p>{{ comment.content }}</p>
+   <h6>{{comment.author}}</h6>
+   <h6>{{ comment.content }}</h6>
    <small>{{ comment.date_created  }}</small>
    <hr>
      {% endfor %}

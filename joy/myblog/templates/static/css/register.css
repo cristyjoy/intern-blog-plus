@@ -1,11 +1,11 @@
 body{
   background:url(img/pa.jpg);
   background-repeat: no-repeat;
-  background-size: 25900px;
+  background-size: 1400px;
 }
 .card{
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-   max-width: 900px;
+   max-width: 320px;
    margin:auto;
    transition: 0.3s;
    border-radius: 50px;
@@ -14,9 +14,10 @@ body{
    background:url("img/gal.jpg");
    background-size: 1000px;
    background-repeat: no-repeat;
-   border-style: groove;
+   border-style: ridge;
    margin-left: auto;
    margin-right: auto;
+   margin-top: 100px;
 }
 .p{
    font-family: "Times New Roman", Times, serif;
@@ -59,4 +60,26 @@ img{
    width: 250px;
    height: auto;
    float: center;
+}
+.class {
+   text-align: center;
+  font-family: "Courier Header", serif;
+  font-family: extra bolder;
+  font-family: cursive;
+  font-weight: bolder;
+  font-size: 30px;
+  font-stretch: ultra-expanded;
+}
+button{
+  margin-left: 100px;
+  size: 100%;
+}
+p{
+  font-size: smaller;
+  color: #090101;
+  margin-left: 20px;
+}
+.helptext{
+  color: red;
+  font-size: 0px;
 }

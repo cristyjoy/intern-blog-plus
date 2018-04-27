@@ -1,3 +1,4 @@
+
 {% load static %}
 {% block content %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}"/>
@@ -11,14 +12,25 @@
   <h2>Post Detail</h2>
 
           <div class="card">
-          <p>Category: {{ post.category }}</p>
+          <p>Category: {{ post.title }}</p>
           <p><small>Posted on: {{ post.date_created }}</small></p>
           <h3 class="heading">Heading: {{ post.blog.heading }}</h3>
           <h3 class="sub_heading">Sub Heading: {{ post.blog.sub_heading }}</h3>
           <div class="lists">
           <img src="{{ post.banner_photo.url }}">
         </div>
-          <p>Body: {{ post.body }}</p>
+         {% for tag in post.tags.all %}
+    {% if forloop.last %}
+      <small>{{ tag }}</small>
+    {% else %}
+      <small>{{ tag }},</small>
+    {% endif %}
+  {% endfor %}
+  <p>{{ post.category }}</p>
+  <p>{{ post.body }}</p>
+        <p>Body: {{ post.body }}</p>
+        <p>User:{{ user.first_name }}</p>
+
        </div>
        <div class="card">
   <h6>commments :</h6>
@@ -29,4 +41,5 @@
    <hr>
      {% endfor %}
      <a href="{% url 'posts:post-comment' post.id %}">Comment</a>
+
 {% endblock %}

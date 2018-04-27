@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
 from .forms import RegisterForm
+
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views import View

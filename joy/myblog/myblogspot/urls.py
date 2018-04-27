@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.urls import path
 
-from . import views
+from .import views
 
-from .views import PostDetailView, PostView
+from .views import (
+    PostDetailView,
+    PostView,
+    PostCreateView
+    )
 
 app_name = 'myblogspot'
 
@@ -27,4 +31,7 @@ urlpatterns = [
     path('<int:pk>/', views.comment, name='post-comment'),
     path('draft/', views.Draft, name='draft'),
     path('hidden/', views.Hidden, name='hidden'),
+    path('create/', PostCreateView.as_view(), name='post-create'),
+    #path('edit/<title>/', views.post_edit, name='post-edit'),
+    #path('profile/<username>/', ProfileDetailView.as_view(), name='profile')
 ]

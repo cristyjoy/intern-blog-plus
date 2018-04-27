@@ -4,13 +4,13 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.views import View, generic
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from . forms import CommentForm
+
 from .forms import (CommentForm, CategoryForm, TagForm, PostForm)
-from .models import Post, Index, Category, Tag, Comment
+from .models import Post, Category, Tag, Comment
 
 class PostDetailView(View):
     def get(self, request, title, *args, **kwargs):
-         post = get_object_or_404(Post, title=title, status='published')
+         post = get_object_or_404(Post, title=title)
          comment = post.comment_set.all()
          context = {'post':post,'comment': comment,}
 
@@ -41,7 +41,7 @@ def comment(request,pk):
 
 class PostView(LoginRequiredMixin,View):
     def get(self, request, *args, **kwargs):
-        post = Post.objects.all().order_by('-date_created')
+        post = Post.objects.filter(status='published').order_by('-date_created')
         context = {
             'object_list':post,
         }
@@ -72,12 +72,12 @@ class PostCreateView(LoginRequiredMixin, View):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-            return redirect('posts:post-list', title = post.title)
+            return redirect('posts:post_detail', title = post.title)
         else:
             form = PostForm()
         context = {
             'form': form,
-            'post': post,
+
         }
         return render(request, self.template_name, context)
 def  post_edit(request, title):

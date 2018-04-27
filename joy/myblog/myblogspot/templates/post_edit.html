@@ -1,9 +1,12 @@
 {% load static %}
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/post_edit.css' %}" />
+  <div class="card">
   <h1>New post</h1>
   <form method="post" id="form" action="" enctype="multipart/form-data" class="infotabs accfrm">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="OK">
   </form>
+</div>
 {% endblock %}

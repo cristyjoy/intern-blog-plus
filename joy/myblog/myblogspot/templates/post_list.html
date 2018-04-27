@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/post.css' %}" />
 
     <h2>Post Lists</h2>
+     <a href='{% url "posts:post-create" %}' role="button">Create</a>
     {% if object_list %}
         {% for post in object_list %}
           <div class="card">
@@ -13,6 +14,7 @@
             <p>Sub Title: {{ post.sub_title }}</p>
             <div class="lists">
             <img src="{{ post.banner_photo.url }}">
+            <p>User: {{post.user.first_name}}</p>
           </div>
 
             <br>

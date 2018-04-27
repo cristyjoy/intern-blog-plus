@@ -13,12 +13,7 @@ POST_STATUS = (
     ('hidden', 'Hidden'),
 )
 
-class Index(models.Model):
-    heading = models.CharField(max_length=150)
-    sub_heading = models.CharField(max_length=150)
 
-    def __str__(self):
-        return '{}'.format(self.heading)
 class Tag(models.Model):
     user                    = models.ForeignKey(User, on_delete=models.CASCADE)
     title                   = models.CharField(max_length=120)
@@ -48,7 +43,6 @@ class Post(models.Model):
     body = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now_add=True)
-    blog = models.ForeignKey(Index, on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
     status = models.CharField(max_length=10, choices=POST_STATUS, default='draft')

@@ -4,12 +4,11 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.views import View, generic
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-
+from . forms import CommentForm
 from .forms import (CommentForm, CategoryForm, TagForm, PostForm)
 from .models import Post, Index, Category, Tag, Comment
 
 class PostDetailView(View):
-
     def get(self, request, title, *args, **kwargs):
          post = get_object_or_404(Post, title=title, status='published')
          comment = post.comment_set.all()
@@ -41,9 +40,7 @@ def comment(request,pk):
         return get_object_or_404(Post, title__iexact=title)
 
 class PostView(LoginRequiredMixin,View):
-
     def get(self, request, *args, **kwargs):
-
         post = Post.objects.all().order_by('-date_created')
         context = {
             'object_list':post,
@@ -75,29 +72,30 @@ class PostCreateView(LoginRequiredMixin, View):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-            return redirect('blog:post-detail', title = post.title)
+            return redirect('posts:post-list', title = post.title)
         else:
             form = PostForm()
         context = {
-            'form': form
+            'form': form,
+            'post': post,
         }
         return render(request, self.template_name, context)
-# def  post_edit(request, title):
-#     post_user = Post.objects.filter(user=request.user)
-#     # post = get_object_or_404(Post, title=title)
-#     if request.method == "POST":
-#         form = PostForm(request.POST, request.FILES, instance=post)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.user = request.user
-#             post.save()
-#             return redirect('posts:post-detail', title=title)
-#     else:
-#         form = PostForm(instance=post)
-#     context = {
-#         'form': form,
-#     }
-#     return render(request, 'post_edit.html', context)
+def  post_edit(request, title):
+    post_user = Post.objects.filter(user=request.user)
+    post = get_object_or_404(Post, title=title)
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            return redirect('posts:post-lists', title=title)
+    else:
+        form = PostForm(instance=post)
+    context = {
+        'form': form,
+    }
+    return render(request, 'post_edit.html', context)
 
 # class ProfileDetailView(View):
 #     def get(self, request, username, *args, **kwargs):

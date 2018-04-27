@@ -32,6 +32,6 @@ urlpatterns = [
     path('draft/', views.Draft, name='draft'),
     path('hidden/', views.Hidden, name='hidden'),
     path('create/', PostCreateView.as_view(), name='post-create'),
-    #path('edit/<title>/', views.post_edit, name='post-edit'),
+    path('edit/<title>/', views.post_edit, name='post-edit'),
     #path('profile/<username>/', ProfileDetailView.as_view(), name='profile')
 ]
